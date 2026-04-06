@@ -1,0 +1,173 @@
+/* Background */
+body {
+  background: radial-gradient(circle at top, #eef2ff, #f8fafc);
+  font-family: "Inter", sans-serif;
+}
+
+/* Container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card */
+.login-card {
+  width: 340px;
+  padding: 34px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(226, 232, 240, 0.6);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.06),
+    0 2px 6px rgba(0,0,0,0.04);
+
+  transition: 0.3s ease;
+}
+
+/* Title */
+.login-card h2 {
+  margin-bottom: 22px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Inputs */
+.login-card input {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 12px;
+
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+
+  background: #f8fafc;
+
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+/* Focus effect */
+.login-card input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #6366f1;
+
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
+/* Button */
+.login-card button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+/* Button hover */
+.login-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(99,102,241,0.25);
+}
+
+/* Background */
+body {
+  background: radial-gradient(circle at top, #eef2ff, #f8fafc);
+  font-family: "Inter", sans-serif;
+}
+
+/* Container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card */
+.login-card {
+  width: 340px;
+  padding: 34px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(226, 232, 240, 0.6);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.06),
+    0 2px 6px rgba(0,0,0,0.04);
+
+  transition: 0.3s ease;
+}
+
+/* Title */
+.login-card h2 {
+  margin-bottom: 22px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Inputs */
+.login-card input {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 12px;
+
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+
+  background: #f8fafc;
+
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+/* Focus effect */
+.login-card input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #6366f1;
+
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
+/* Button */
+.login-card button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+/* Button hover */
+.login-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(99,102,241,0.25);
+}
