@@ -1,4 +1,3 @@
-
 import os
 
 DATABASE_URL = (
