@@ -10,10 +10,10 @@ import hiringIcon from "./hiring.png";
 
 /* DASHBOARDS CONFIG (ids must match dashboard pages) */
 const dashboards = [
-  { id: "employee-dash", path: "/employee", title: "Employee Analytics", desc: "Department, salary and workforce insights", icon: employeeIcon, favImage: "/employee.jpg", allowedRoles: ["admin"] },
-  { id: "project-dash", path: "/project", title: "Project Analytics", desc: "Project budgets, teams and delivery metrics", icon: projectIcon, favImage: "/project.jpg", allowedRoles: ["admin", "manager"] },
+  { id: "employee-dash", path: "/employee", title: "Employee Analytics", desc: "Department, salary and workforce insights", icon: employeeIcon, favImage: "/employee.jpg", allowedRoles: ["admin", "hr"] },
+  { id: "project-dash", path: "/project", title: "Project Analytics", desc: "Project budgets, teams and delivery metrics", icon: projectIcon, favImage: "/project.jpg", allowedRoles: ["admin", "manager" , "Finance"] },
   { id: "performance-dash", path: "/performance", title: "Performance Analytics", desc: "Employee performance and productivity analysis", icon: performanceIcon, favImage: "/performance.jpg", allowedRoles: ["admin", "analyst"] },
-  { id: "hiring-dash", path: "/hiring", title: "Hiring Analytics", desc: "Recruitment funnel and hiring success metrics", icon: hiringIcon, favImage: "/hiring.jpg", allowedRoles: ["admin", "manager"] },
+  { id: "hiring-dash", path: "/hiring", title: "Hiring Analytics", desc: "Recruitment funnel and hiring success metrics", icon: hiringIcon, favImage: "/hiring.jpg", allowedRoles: ["admin", "manager","hr"] },
 ];
 
 /* --- helpers to read/write per-user favorites and broadcast updates --- */

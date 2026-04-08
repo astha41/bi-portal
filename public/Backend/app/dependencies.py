@@ -1,3 +1,4 @@
+# backend/app/dependencies.py
 from fastapi import Depends, HTTPException, status
 from jose import jwt, JWTError
 from fastapi.security import OAuth2PasswordBearer
@@ -38,6 +39,10 @@ async def get_current_user(
     user = result.scalar_one_or_none()
 
     if user is None:
+        raise credentials_exception
+
+    # Reject inactive users (treat as invalid credentials)
+    if not getattr(user, "is_active", True):
         raise credentials_exception
 
     return user
