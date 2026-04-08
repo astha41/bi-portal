@@ -46,8 +46,6 @@ The repo is organized into backend (API) and frontend (UI) areas. This single RE
 
 ## Screenshots
 
-Place these images in `docs/screenshots/` (or update paths below) and commit them to the repo so the README renders correctly on GitHub.
-
 - Login page  
   ![Login](docs/screenshots/login.png)
 
@@ -59,8 +57,6 @@ Place these images in `docs/screenshots/` (or update paths below) and commit the
 
 - Project dashboard (embedded Superset)  
   ![Project Dashboard](docs/screenshots/project_dashboard.png)
-
-(If you prefer different filenames, update the image paths accordingly.)
 
 ---
 
