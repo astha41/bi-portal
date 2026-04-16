@@ -62,41 +62,41 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home user={user} role={role} />} />
 
-                <Route
-                  path="/employee"
-                  element={
-                    <ProtectedRoute role={role} allowedRoles={["admin"]}>
-                      <EmployeeDashboard user={user} role={role} />
-                    </ProtectedRoute>
-                  }
-                />
+               <Route
+  path="/employee"
+  element={
+    <ProtectedRoute role={role} allowedRoles={["admin", "hr"]}>
+      <EmployeeDashboard user={user} role={role} />
+    </ProtectedRoute>
+  }
+/>
 
-                <Route
-                  path="/project"
-                  element={
-                    <ProtectedRoute role={role} allowedRoles={["admin", "manager"]}>
-                      <ProjectDashboard user={user} role={role} />
-                    </ProtectedRoute>
-                  }
-                />
+<Route
+  path="/project"
+  element={
+    <ProtectedRoute role={role} allowedRoles={["admin", "manager", "finance manager"]}>
+      <ProjectDashboard user={user} role={role} />
+    </ProtectedRoute>
+  }
+/>
 
-                <Route
-                  path="/performance"
-                  element={
-                    <ProtectedRoute role={role} allowedRoles={["admin", "analyst"]}>
-                      <PerformanceDashboard user={user} role={role} />
-                    </ProtectedRoute>
-                  }
-                />
+<Route
+  path="/performance"
+  element={
+    <ProtectedRoute role={role} allowedRoles={["admin", "analyst"]}>
+      <PerformanceDashboard user={user} role={role} />
+    </ProtectedRoute>
+  }
+/>
 
-                <Route
-                  path="/hiring"
-                  element={
-                    <ProtectedRoute role={role} allowedRoles={["admin", "manager"]}>
-                      <HiringDashboard user={user} role={role} />
-                    </ProtectedRoute>
-                  }
-                />
+<Route
+  path="/hiring"
+  element={
+    <ProtectedRoute role={role} allowedRoles={["admin", "manager", "hr"]}>
+      <HiringDashboard user={user} role={role} />
+    </ProtectedRoute>
+  }
+/>
 
                 {/* Admin provisioning page */}
                 <Route

@@ -70,6 +70,7 @@ export default function Login({ setUser, setRole }) {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // ADDED
   const [captchaValue, setCaptchaValue] = useState(generateCaptchaValue(5));
   const [captchaInput, setCaptchaInput] = useState("");
   const [error, setError] = useState("");
@@ -81,6 +82,8 @@ export default function Login({ setUser, setRole }) {
   useEffect(() => {
     drawCaptchaToCanvas(canvasRef.current, captchaValue);
   }, [captchaValue]);
+
+  const toggleShowPassword = () => setShowPassword((v) => !v); // ADDED
 
   const refreshCaptcha = () => {
     setRefreshing(true);
@@ -184,15 +187,51 @@ export default function Login({ setUser, setRole }) {
             />
 
             <label className="field-label">Password</label>
-            <input
-              className="input-field"
-              placeholder="Password"
-              type="password"
-              value={password}
-              autoComplete="current-password"
-              onChange={(e) => setPassword(e.target.value)}
-              aria-label="password"
-            />
+
+            {/* PASSWORD WRAPPER (scoped to login card only) */}
+            <div className="login-password-wrapper">
+              <input
+                className="input-field login-password-input"
+                placeholder="Password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
+                aria-label="password"
+              />
+
+              <button
+                type="button"
+                className="login-password-toggle"
+                onClick={toggleShowPassword}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                aria-pressed={showPassword}
+                title={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+                    <path d="M3 12s4-7 9-7 9 7 9 7-4 7-9 7-9-7-9-7z" stroke="#374151" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="#374151" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+  <path
+    d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"
+    stroke="#374151"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+  <path
+    d="M3 3l18 18"
+    stroke="#374151"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+  />
+</svg>
+                )}
+              </button>
+            </div>
 
             <div className="captcha-block">
               <div className="captcha-left">
@@ -238,7 +277,7 @@ export default function Login({ setUser, setRole }) {
             </div>
 
             <button className="submit-button" type="submit" disabled={loading}>
-              {loading ? "Signing in…" : "Sign in"}
+              {loading ? "loging in…" : "log in"}
             </button>
           </form>
 

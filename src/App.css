@@ -62,26 +62,7 @@ body {
   background: #f5f7fb;
 }
 
-.navbar {
-  height: 60px;
-  width: 100%; 
-  max-width: 1630px;         /* was 1470px, which caused horizontal overflow */
-  margin: 0;
-  background: #111827;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
 
-/* Logo / Title */
-.navbar h2 {
-  color: white;
-  margin: 0;
-}
-
-/* Navigation links container */
 .nav-links {
   display: flex;
   gap: 25px;
@@ -121,38 +102,7 @@ body {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-}
 
-.login-card {
-  background: white;
-  padding: 30px;
-  width: 300px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  border-radius: 8px;
-}
-
-.login-card h2 {
-  margin-bottom: 20px;
-}
-
-.login-card input {
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 8px;
-}
-
-.login-card button {
-  width: 100%;
-  padding: 10px;
-  background: #2563eb;
-  color: white;
-  border: none;
-}
 .nav-links {
   display: flex;
   gap: 15px;
@@ -176,7 +126,7 @@ body {
   height: 36px;
   border-radius: 50%;
   color: white;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -224,11 +174,9 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
-
-
 .dropdown-item {
   padding: 10px 12px;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -237,11 +185,6 @@ body {
 
 .login {
   background: #3b82f6;
-  color: white;
-}
-
-.logout {
-  background: #ef4444;
   color: white;
 }
 

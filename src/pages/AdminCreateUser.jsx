@@ -59,7 +59,7 @@ async function retryFetch(url, opts = {}, retries = 1, timeoutMs = 7000) {
 }
 
 // Component ---------------------------------------------------------------
-export default function AdminCreateUser() {
+export default function AdminCreateUser({ setUser, setRole }) {
   const [roles, setRoles] = useState(null);
   const [users, setUsers] = useState(null);
 
@@ -236,44 +236,65 @@ export default function AdminCreateUser() {
     }
   }
 
-  // Optimistic role change (no reload)
   async function changeUserRoleOptimistic(userId) {
-    if (!token) { showNotice("error","Not authenticated"); return; }
-    const newRoleName = roleEdits[userId];
-    if (!newRoleName) { showNotice("error","Select a role first"); return; }
-    const prevUser = users?.find(u => u.id === userId);
-    if (!prevUser) return;
+  if (!token) { showNotice("error","Not authenticated"); return; }
 
-    // optimistic local change
-    upsertUserLocally({ ...prevUser, role: { id: prevUser.role?.id ?? null, name: newRoleName } });
+  const newRoleName = roleEdits[userId];
+  if (!newRoleName) { showNotice("error","Select a role first"); return; }
 
-    setActionLoadingId(userId);
-    try {
-      const res = await retryFetch(`${API}/admin/users/${userId}/role`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ name: newRoleName }),
-      }, 1);
-      if (!res.ok) {
-        const txt = await safeGetText(res);
-        throw new Error(txt || `Role update failed (${res.status})`);
-      }
-      const updated = await res.json().catch(() => null);
-      if (updated && updated.id) upsertUserLocally(updated);
-      showNotice("success", "Role updated");
-    } catch (err) {
-      upsertUserLocally(prevUser); // rollback
-      const msg = String(err?.message || err);
-      if (msg.toLowerCase().includes("failed to fetch") || msg.toLowerCase().includes("cors")) {
-        showNotice("error", "Network/CORS error while updating role. Check backend/CORS and try again.");
-      } else {
-        showNotice("error", msg);
-      }
-      console.error("changeUserRole error:", err);
-    } finally {
-      setActionLoadingId(null);
+  const prevUser = users?.find(u => u.id === userId);
+  if (!prevUser) return;
+
+  // optimistic update
+  upsertUserLocally({ 
+    ...prevUser, 
+    role: { id: prevUser.role?.id ?? null, name: newRoleName } 
+  });
+
+  setActionLoadingId(userId);
+
+  try {
+    const res = await retryFetch(`${API}/admin/users/${userId}/role`, {
+      method: "PATCH",
+      headers: { 
+        "Content-Type": "application/json", 
+        Authorization: `Bearer ${token}` 
+      },
+      body: JSON.stringify({ name: newRoleName }),
+    }, 1);
+
+    if (!res.ok) {
+      const txt = await safeGetText(res);
+      throw new Error(txt || `Role update failed (${res.status})`);
     }
+
+    const updated = await res.json().catch(() => null);
+
+    if (updated && updated.id) {
+      upsertUserLocally(updated);
+
+      // 🔥 IMPORTANT FIX: if current logged-in user changed role
+      const currentUserId = JSON.parse(localStorage.getItem("current_user_id"));
+
+      if (updated.id === currentUserId) {
+        setUser(updated);
+        setRole(updated.role?.name?.toLowerCase());
+      }
+    }
+
+    showNotice("success", "Role updated");
+
+  } catch (err) {
+    upsertUserLocally(prevUser); // rollback
+
+    const msg = String(err?.message || err);
+    showNotice("error", msg);
+
+    console.error("changeUserRole error:", err);
+  } finally {
+    setActionLoadingId(null);
   }
+}
 
   // Password helpers
   const onGenerate = () => {

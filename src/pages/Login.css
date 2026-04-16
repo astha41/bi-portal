@@ -253,3 +253,34 @@
   .captcha-block { flex-direction: column; }
   .captcha-right { width: 100%; }
 }
+/* password wrapper */
+.login-password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* input */
+.login-password-input {
+  width: 100%;
+  padding: 12px 36px 12px 14px; /* tighter space */
+  box-sizing: border-box;
+}
+
+/* eye button */
+.login-password-toggle {
+  position: absolute;   /* IMPORTANT: back to absolute */
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  width: 30px;   
+  height: 30px; 
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
