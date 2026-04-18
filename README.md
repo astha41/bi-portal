@@ -43,7 +43,7 @@ The repo is organized into backend (API) and frontend (UI) areas.
 - Login page  
  ![Login](public/Backend/app/docs/screenshots/login.png)
 
-- Home / Dashboard tiles  
+- Home page 
   ![Home](public/Backend/app/docs/screenshots/Home.png)
 
 - Admin — User Provisioning page  
