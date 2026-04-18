@@ -44,7 +44,7 @@ The repo is organized into backend (API) and frontend (UI) areas.
  ![Login](C:\Users\korat\bi-portal-main\bi-portal-main\public\Backend\app\docs\screenshots\login.png)
 
 - Home / Dashboard tiles  
-  ![Home](docs/screenshots/Home.png)
+  ![Home](public/Backend/app/docs/screenshots/Home.png)
 
 - Admin — User Provisioning page  
   [Admin - User Provisioning](docs\screenshots\user_provisioning.png)
