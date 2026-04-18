@@ -1,10 +1,6 @@
 # Business Intelligence Portal
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue) ![Version](https://img.shields.io/badge/version-1.0.0-orange) ![Issues](https://img.shields.io/badge/issues-welcome-yellow)
-
 A full‑stack Business Intelligence (BI) portal with role‑based access, user provisioning, and optional embedded Superset dashboards. This repository contains a FastAPI backend and a React frontend. The Admin UI supports optimistic updates so user role changes and activate/deactivate actions appear instantly.
-
-Status: Beta — actively developed; core features implemented and working. Known issues and roadmap items are tracked in the repository issues.
 
 ---
 
@@ -19,9 +15,7 @@ Status: Beta — actively developed; core features implemented and working. Know
 - Configuration & environment
 - First-time setup (bootstrap admin)
 - Admin UI: usage & behavior
-- Troubleshooting (common problems)
-- Contributing
-- Contact
+- Troubleshooting
 
 ---
 
@@ -32,7 +26,7 @@ This project provides:
 - A React frontend with an admin "User Provisioning" page that supports create, role assignment, activate/deactivate and optimistic UI updates.
 - Optional integration with Apache Superset for embedding dashboards using guest tokens.
 
-The repo is organized into backend (API) and frontend (UI) areas. This single README explains how to get started, where to find important pieces, and how to onboard a new developer or admin.
+The repo is organized into backend (API) and frontend (UI) areas. 
 
 ---
 
@@ -47,30 +41,29 @@ The repo is organized into backend (API) and frontend (UI) areas. This single RE
 ## Screenshots
 
 - Login page  
-  ![Login](docs/screenshots/login.png)
+ [Login](docs\screenshots\login.png)
 
 - Home / Dashboard tiles  
-  ![Home Tiles](docs/screenshots/home_tiles.png)
+  [Home](docs\screenshots\Home.png)
 
 - Admin — User Provisioning page  
-  ![User Provisioning](docs/screenshots/user_provisioning.png)
+  [Admin - User Provisioning](docs\screenshots\user_provisioning.png)
 
-- Project dashboard (embedded Superset)  
-  ![Project Dashboard](docs/screenshots/project_dashboard.png)
+- Dashboard page(embedded Superset)  
+  [Dashboard](docs\screenshots\Dashboard_page.png)
 
 ---
 
 ## Key features
 
-- Role-based access control (roles table + per-user role association)
+- Role-based access control
 - Admin user provisioning:
   - Create users with generated passwords and strength meter
-  - Assign roles via dropdown (create role automatically when needed)
+  - Assign roles via dropdown
   - Activate / Deactivate accounts
   - Optimistic UI updates for fast admin interactions
 - Login and JWT-based authentication
 - Optional Superset embed support (guest token proxy)
-- Dev helpers: permissive CORS and debug endpoints for local troubleshooting
 
 ---
 
@@ -80,7 +73,7 @@ The repo is organized into backend (API) and frontend (UI) areas. This single RE
 - Auth: JWT (python-jose) and bcrypt hashing (passlib)
 - Frontend: React (Create React App)
 - Database: PostgreSQL
-- Optional: Apache Superset for BI dashboards
+- Visualization: Apache Superset for BI dashboards
 
 ---
 
@@ -112,8 +105,6 @@ Important settings to provide (via environment variables or a .env file):
 - SECRET_KEY — JWT signing secret (use a secure random value in production)
 - ACCESS_TOKEN_EXPIRE_MINUTES — token expiry in minutes
 - REACT_APP_API_URL — frontend base URL to call the backend API
-
-Store production secrets securely (secrets manager, environment configuration, or Docker secrets) and never commit them to source control.
 
 ---
 
@@ -156,33 +147,6 @@ Overview of the Admin "User Provisioning" page:
 - Superset embedding fails:
   - Verify Superset is reachable, API credentials configured, and guest token generation is permitted by your Superset configuration.
 
-If you see a specific error, capture the backend logs and the failing request details from the browser DevTools Network tab and file an issue or ask for help with that output.
 
 ---
 
-## Contributing
-
-We welcome contributions. Typical workflows:
-- Open an issue describing the bug or feature request.
-- Fork the repository and create a feature branch for your change.
-- Write tests for backend and frontend changes where applicable.
-- Submit a pull request with a clear title and description; include screenshots for UI changes.
-- Follow project styling guidelines and do not commit secrets.
-
-Suggested repo additions to make collaboration easier (if not already present):
-- .env.example listing required environment variables
-- CONTRIBUTING.md describing the development workflow and coding standards
-- A simple GitHub Actions workflow to run tests on PRs
-- A docker-compose file for local development (Postgres + backend + frontend)
-
----
-
-## Contact
-
-If you want me to:
-- Generate the README with actual badge URLs customized for your repo,
-- Produce ready-to-commit screenshot files (optimized PNGs) and the image folder layout,
-- Create .env.example and CONTRIBUTING.md,
-- Produce a short Quick Start with the exact commands for your environment (Windows/macOS/Linux),
-
-tell me which files you want next and I will generate them ready to copy into your repo.
